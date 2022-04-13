@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+        <style>
+            body 
+            {
+                background-color: black;
+                background-repeat: no-repeat;
+                background-attachment: fixed; 
+                background-size: 100% 100%;
+            }
+            h1 {text-align: center; color:white;
+                padding-top: 3%}
+            h3 {text-align: center; color:white}
+            h4 {color:white; white-space: pre-wrap}
+            h6 {text-align: right; color:white; 
+                position: fixed; bottom: 0;right: 30;}
+            p {text-align: center; color:white}
+            a {color:white}
+            div {text-align: center;}
+            input {text-align: center; }
+            
+            .square {
+                height: 70%; 
+                width: 70%; 
+                object-fit: contain;
+            }
+
+        </style>
+    </head>
+
+    <body style="text-align: center">
+        
+        <div style="text-align: center; color:white">
+            <div id='result', class="square", style="display: inline-block; text-align: center;">
+                <script>
+                    var filename = '{{filename}}';
+                    var classification_result = '{{classification_result}}';
+
+                    var results = document.getElementById('result');
+                    var val = '<h1>' + 'You appear to be ' + classification_result + '!!</h1>'
+                </script>
+                <br>
+                <p><a href=/ ><button class="btn btn-info">Try a different image!</button></a></p>
+                <script>
+                    val += '<img style="height: 100%; width: 100%; object-fit: contain" src="/static/uploads/'+ filename + '">'
+                    results.innerHTML += val
+                    
+                </script>
+            </div>
+        </div>
+        <div>
+            <h6>By Ashish Vinodkumar & Pranav Manjunath</h6>
+        </div>
+    </body>
+</html>

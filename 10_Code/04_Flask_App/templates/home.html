@@ -1,0 +1,71 @@
+ <html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+        <style>
+            #wholepage {
+                width: 900px;
+                margin-left:auto;
+                margin-right:auto;
+            }
+            body  
+            {
+                background-image: url('static/face-emotion-background.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed; 
+                background-size: 100% 100%;
+            }
+            h1 {text-align: center; color:white;
+                padding-top: 1%}
+            h4 {text-align: center; color:white}
+            
+            h6 {text-align: right; color:white; 
+                position: fixed; bottom: 0;right: 30;}
+            p {text-align: center; color:white}
+            div {text-align: center;}
+            input {text-align: center; }
+        </style>
+    </head>
+
+    <body>
+        <div id='wholepage'>
+            <div class="center">
+                <h1 text-align: center;>Welcome to Face Emotion Detection Engine</h1>
+                <h4>Please upload an image below and we will classify it as HAPPY, SAD, or NEUTRAL!</h4>
+                
+                <p>
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                          <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+                    {% endwith %}
+
+                {% if filename %}
+                <div>
+                    <img src="{{ url_for('display_image', filename=filename) }}">
+                </div>
+                {% endif %}
+                
+                <form method="POST" action="/" enctype="multipart/form-data">
+                    <dl>
+                        <p>
+                            <input type="file" name="file" class="form-control" autocomplete="off" required>
+                        </p>
+                    </dl>
+                    <p>
+                        <input type="submit" value="Submit" class="btn btn-info">
+                    </p>
+                </form>
+                
+                <h6>By Ashish Vinodkumar & Pranav Manjunath</h6>
+            </div>
+        </div>
+    </body>
+     
+    
+     
+</html>
