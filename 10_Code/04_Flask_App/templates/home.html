@@ -45,9 +45,6 @@
                     {% endwith %}
 
                 {% if filename %}
-                <div>
-                    <img src="{{ url_for('display_image', filename=filename) }}">
-                </div>
                 {% endif %}
                 
                 <form method="POST" action="/" enctype="multipart/form-data">

@@ -36,15 +36,15 @@
             <div id='result', class="square", style="display: inline-block; text-align: center;">
                 <script>
                     var filename = '{{filename}}';
-                    var classification_result = '{{classification_result}}';
+                    var final_classification = '{{final_classification}}';
 
                     var results = document.getElementById('result');
-                    var val = '<h1>' + 'You appear to be ' + classification_result + '!!</h1>'
+                    var val = '<h1>' + 'You appear to be ' + final_classification + '!!</h1>'
                 </script>
                 <br>
                 <p><a href=/ ><button class="btn btn-info">Try a different image!</button></a></p>
                 <script>
-                    val += '<img style="height: 100%; width: 100%; object-fit: contain" src="/static/uploads/'+ filename + '">'
+                    val += '<img style="height: 100%; width: 100%; object-fit: contain" src="/static/uploads/originals/'+ filename + '">'
                     results.innerHTML += val
                     
                 </script>
