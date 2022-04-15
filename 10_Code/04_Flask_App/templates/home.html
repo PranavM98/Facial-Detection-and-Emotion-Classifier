@@ -10,14 +10,16 @@
             }
             body  
             {
-                background-image: url('static/face-emotion-background.png');
+/*                 background-image: url('static/face-emotion-background.png'); */
+                background-color: black;
                 background-repeat: no-repeat;
                 background-attachment: fixed; 
                 background-size: 100% 100%;
             }
             h1 {text-align: center; color:white;
-                padding-top: 1%}
-            h4 {text-align: center; color:white}
+                padding-top: 20%}
+            h4 {text-align: center; color:white;
+                padding-top: 5%}
             
             h6 {text-align: right; color:white; 
                 position: fixed; bottom: 0;right: 30;}
@@ -28,10 +30,11 @@
     </head>
 
     <body>
+        
         <div id='wholepage'>
             <div class="center">
-                <h1 text-align: center;>Welcome to Face Emotion Detection Engine</h1>
-                <h4>Please upload an image below and we will classify it as HAPPY, SAD, or NEUTRAL!</h4>
+                <h1 text-align: center;>Welcome to Face Emotion Detection Engine!!</h1>
+                <h4>Please upload an image below to proceed!!</h4>
                 
                 <p>
                     {% with messages = get_flashed_messages() %}

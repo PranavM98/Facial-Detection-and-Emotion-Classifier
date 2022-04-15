@@ -2,6 +2,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             body 
             {
@@ -26,32 +27,79 @@
                 width: 70%; 
                 object-fit: contain;
             }
+            
+            * {
+              box-sizing: border-box;
+            }
+
+            .row {
+              display: flex;
+            }
+            
+            .row::after {
+              content: "";
+              clear: both;
+              display: table;
+            }
+
+            /* Create three equal columns that sits next to each other */
+            .column {
+              flex: 33.33%;
+              padding: 10px;
+            }
+            
 
         </style>
     </head>
 
     <body style="text-align: center">
-        
-        <div style="text-align: center; color:white">
-            <div id='result', class="square", style="display: inline-block; text-align: center;">
-                <script>
-                    var filename = '{{filename}}';
-                    var final_classification = '{{final_classification}}';
 
-                    var results = document.getElementById('result');
-                    var val = '<h1>' + 'You appear to be ' + final_classification + '!!</h1>'
-                </script>
-                <br>
-                <p><a href=/ ><button class="btn btn-info">Try a different image!</button></a></p>
-                <script>
-                    val += '<img style="height: 100%; width: 100%; object-fit: contain" src="/static/uploads/originals/'+ filename + '">'
-                    results.innerHTML += val
-                    
-                </script>
-            </div>
+        <script>
+            var filename = '{{filename}}';
+            var boxed_img_path = '{{boxed_img_path}}';
+            var cropped_img_path = '{{cropped_img_path}}'
+        </script>
+        
+        <h1>Step 1: Face Detection</h1>
+        <p>Please find below the original image, grayscale boxed image, and cropped image.</p>
+        <p>Click on the button below to proceed to Step 2</p>
+        <p>
+            <a href=/ ><button class="btn btn-info">Back</button></a> 
+            &emsp;&emsp; 
+            <a href=/emotion_classification ><button class="btn btn-info">Step 2</button></a>
+        </p>
+
+        <div class="row">
+            
+          <div id='left_image', class="column">
+              <h1>Original Image</h1>
+              <script>
+                  var left_image = document.getElementById('left_image');
+                  left_image.innerHTML += '<img src="/static/uploads/originals/'+ filename + '" height="300" width="350">'
+              </script>
+          </div>
+            
+          <div id='center_image', class="column">
+              <h1>Grayscale Boxed Image</h1>
+              <script>
+                  var center_image = document.getElementById('center_image');
+                  center_image.innerHTML += '<img src="/static/uploads/object_detection_boxed/'+ boxed_img_path + '" height="300" width="350">'
+              </script>
+          </div>
+            
+          <div id='right_image', class="column">
+              <h1>Grayscale Cropped Image</h1>
+              <script>
+                  var right_image = document.getElementById('right_image');
+                  right_image.innerHTML += '<img src="/static/uploads/object_detection_cropped/'+ cropped_img_path + '" height="64" width="64">'
+              </script>
+          </div>
+            
         </div>
+        
         <div>
             <h6>By Ashish Vinodkumar & Pranav Manjunath</h6>
         </div>
+        
     </body>
 </html>
