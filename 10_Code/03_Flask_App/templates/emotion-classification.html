@@ -13,6 +13,7 @@
             }
             h1 {text-align: center; color:white;
                 padding-top: 3%}
+            h2 {text-align: center; color:white}
             h3 {text-align: center; color:white}
             h4 {color:white; white-space: pre-wrap}
             h6 {text-align: right; color:white; 
@@ -91,9 +92,9 @@
         <div id='overall_result'>
               <script>
                   var overall_result = document.getElementById('overall_result');
-                  var text = '<h1>Overall Classification is as follows:</h1>'
-                  text += '<p>Majority (Ensemble) Classification: <h4>'+ majority_classification + '</h4></p>'
-                  text += '<p>Best Model (Three-Fourths Model) Classification: <h4>' + best_model_classification + '</h4></p>'
+                  var text = '<h4>Overall Classification is as follows:</h4>'
+                  text += '<p>Majority (Ensemble) Classification: <h2>'+ majority_classification + '</h2></p>'
+                  text += '<p>Best Model (Three-Fourths Model) Classification: <h2>' + best_model_classification + '</h2></p>'
                   overall_result.innerHTML += text
               </script>
         </div>
