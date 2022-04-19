@@ -14,13 +14,16 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
      
-    
 @app.route('/')
+def my_root():
+    return render_template('project_template.html')
+    
+@app.route('/home')
 def my_form():
     return render_template('home.html')
 
 
-@app.route('/', methods=['POST'])
+@app.route('/home', methods=['POST'])
 def home_post():
     
     # Error handling. No file attached.
