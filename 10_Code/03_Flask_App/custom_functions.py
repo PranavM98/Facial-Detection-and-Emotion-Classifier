@@ -11,13 +11,13 @@ tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 # Object Detection
 # Step 1
 def return_boxed_cropped_img(filename):
-    
+
     img= Image.open('static/uploads/originals/'+filename)
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
     # Convert into grayscale
     gray = ImageOps.grayscale(img)
     gray = np.array(gray)
-    
+
     #Storing in the Dataframe
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
     for (x, y, w, h) in faces:
@@ -25,14 +25,14 @@ def return_boxed_cropped_img(filename):
         cv2.rectangle(gray, (x, y), (x + w, y + h), (255, 0, 0), 2)
         cropped_img= gray[y:y+h,x:x+w]
         cropped_image=cv2.resize(cropped_img, (64,64), interpolation = cv2.INTER_AREA)
-    
+
     return_boxed_path = filename+"_boxed.png"
     return_cropped_path = filename+"_cropped.png"
     filepath_boxed_img = 'static/uploads/object_detection_boxed/'+return_boxed_path
     filepath_cropped_img = 'static/uploads/object_detection_cropped/'+return_cropped_path
     plt.imsave(filepath_boxed_img, gray)
     plt.imsave(filepath_cropped_img, cropped_image)
-    
+
     return return_boxed_path, return_cropped_path
 
 # Emotion Classification
@@ -45,7 +45,7 @@ def return_top_half_mask_image(cropped_img_path):
     filepath_top_half = 'static/uploads/top_half_masked/'+return_top_half_path
     plt.imsave(filepath_top_half, top_half)
     return return_top_half_path
-    
+
 def return_bottom_half_mask_image(cropped_img_path):
     gray= Image.open('static/uploads/object_detection_cropped/'+cropped_img_path)
     gray = np.array(gray)
@@ -77,6 +77,7 @@ def return_full_image_classification(cropped_img_path):
     return pred, np.round(pred[0][0]), np.round(pred[0][1]), np.round(pred[0][2])
 
 def return_top_half_image_classification(top_half_mask_image):
+    
     gray= Image.open('static/uploads/top_half_masked/'+top_half_mask_image)
     gray = ImageOps.grayscale(gray)
     gray = np.array(gray)
@@ -122,7 +123,7 @@ def return_overall_classification(full_image_pred, top_half_mask_pred, bottom_ha
     # Majority Classification
     counts = Counter(all_classifications)
     print(counts)
-    
+
     top_two = counts.most_common(2)
     if len(top_two)>1 and top_two[0][1] == top_two[1][1]:
         # It is a tie
@@ -133,57 +134,57 @@ def return_overall_classification(full_image_pred, top_half_mask_pred, bottom_ha
 
 
 if __name__ == "__main__":
-    
+
     # Object Detection
     # Step 1
     return_filepath_boxed_img, return_filepath_cropped_img = return_boxed_cropped_img('sad_images_28.jpg')
-    
+
     # Emotion Classification
     # Step 1. Front-End UI Display.
     return_filepath_top_half = return_top_half_mask_image(return_filepath_cropped_img)
     return_bottom_half_path = return_bottom_half_mask_image(return_filepath_cropped_img)
     return_three_fourths_path = return_three_fourths_mask_image(return_filepath_cropped_img)
-    
+
     # Emotion Classification
     # Step 2. Pass back dictionary here containing percentage of Happy, Neutral, and Sad.
     full_image_pred, f_h, f_s, f_n = return_full_image_classification(return_filepath_cropped_img)
     top_half_mask_pred, t_h, t_s, t_n = return_top_half_image_classification(return_filepath_top_half)
     bottom_half_mask_pred, b_h, b_s, b_n = return_bottom_half_image_classification(return_bottom_half_path)
     three_fourths_mask_pred, tf_h, tf_s, tf_n = return_three_fourths_image_classification(return_three_fourths_path)
-    
+
     # Step 3 - Overall Emotion Classification.
-    majority_classification, best_model_classification = return_overall_classification(full_image_pred, 
-                                                       top_half_mask_pred, 
+    majority_classification, best_model_classification = return_overall_classification(full_image_pred,
+                                                       top_half_mask_pred,
                                                        bottom_half_mask_pred,
                                                        three_fourths_mask_pred)
-    
+
     print('\n\n')
     print('Boxed Image Filepath: ', return_filepath_boxed_img)
     print('Cropped Image Filepath: ', return_filepath_cropped_img)
     print('Top Half Masked Image Filepath: ', return_filepath_top_half)
     print('Bottom Half Masked Image Filepath: ', return_bottom_half_path)
     print('Three Fourths Masked Image Filepath: ', return_three_fourths_path)
-    
+
     print()
     print("Full Image - Happy:",f_h)
     print("Full Image - Sad:",f_s)
     print("Full Image - Neutral:",f_n)
-    
+
     print()
     print("Top Half Mask - Happy:",t_h)
     print("Top Half Mask - Sad:",t_s)
     print("Top Half Mask - Neutral:",t_n)
-    
+
     print()
     print("Bottom Half Mask - Happy:",b_h)
     print("Bottom Half Mask - Sad:",b_s)
     print("Bottom Half Mask - Neutral:",b_n)
-    
+
     print()
     print("Three Fourths Mask - Happy:",tf_h)
     print("Three Fourths Mask - Sad:",tf_s)
     print("Three Fourths Mask - Neutral:",tf_n)
-    
+
     print()
     print('The Majority Classification is: ', majority_classification)
     print('The Best Model (Three-Fourths) Classification is: ', best_model_classification)
