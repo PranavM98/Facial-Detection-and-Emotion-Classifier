@@ -13,11 +13,7 @@
             }
             h1 {text-align: center; color:white;
                 padding-top: 3%}
-<<<<<<< Updated upstream:10_Code/03_Flask_App/templates/emotion-classification.html
             h2 {text-align: center; color:white}
-=======
-            h2 {text-align: center; color:white;}
->>>>>>> Stashed changes:10_Code/04_Flask_App/templates/emotion-classification.html
             h3 {text-align: center; color:white}
             h4 {color:white; white-space: pre-wrap}
             h6 {text-align: right; color:white; 
@@ -93,25 +89,10 @@
             <a href=/home ><button class="btn btn-info">Back</button></a> 
         </p>
         
-
-        <div id='original_image'>
-            <script>
-            var original_image = document.getElementById('original_image');
-            var text = '<img src="/static/uploads/originals/'+ filename + '" height="30%" width="10%">'
-            original_image.innerHTML += text
-        </script>
-        </div>
-        
-
-
         <div id='overall_result'>
               <script>
                   var overall_result = document.getElementById('overall_result');
-<<<<<<< Updated upstream:10_Code/03_Flask_App/templates/emotion-classification.html
                   var text = '<h4>Overall Classification is as follows:</h4>'
-=======
-                  var text = '<h3>Overall Classification is as follows:</h3>'
->>>>>>> Stashed changes:10_Code/04_Flask_App/templates/emotion-classification.html
                   text += '<p>Majority (Ensemble) Classification: <h2>'+ majority_classification + '</h2></p>'
                   text += '<p>Best Model (Three-Fourths Model) Classification: <h2>' + best_model_classification + '</h2></p>'
                   overall_result.innerHTML += text
