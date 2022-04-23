@@ -15,3 +15,7 @@ In this project, we explore various physical layer augmentation techniques such 
 5. Move this new "model_checkpoints" folder under "Facial-Detection-and-Emotion-Classifier/10_Code/03_Flask_App/static/"
 6. Create a new Anaconda (conda) environment and install packages listed in: https://github.com/PranavM98/Facial-Detection-and-Emotion-Classifier/blob/main/10_Code/03_Flask_App/requirements.txt
 7. Navigate to "Facial-Detection-and-Emotion-Classifier/10_Code/03_Flask_App/" on your local, and run "python3 app.py" to run the Flask App.
+
+
+## Kaggle Link to Source Data
+1. https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset
