@@ -1,0 +1,7 @@
+tensorflow
+Pillow
+pandas
+numpy
+flask
+opencv-contrib-python
+matplotlib
