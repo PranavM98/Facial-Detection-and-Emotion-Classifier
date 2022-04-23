@@ -10,4 +10,5 @@ In this project, we explore various physical layer augmentation techniques such 
 3. Specifically, download the "bottom_mask_model", "top_mask_model", "no_mask_model", and "three_fourths_mask_model" folders from this google drive location.
 4. Once downloaded, move all of these folders under a new folder called "model_checkpoints".
 5. Move this new "model_checkpoints" folder under "Facial-Detection-and-Emotion-Classifier/10_Code/03_Flask_App/static/"
-6. Navigate to "Facial-Detection-and-Emotion-Classifier/10_Code/03_Flask_App/" on your local, and run "python3 app.py" to run the Flask App.
+6. Create a new Anaconda (conda) environment and install packages listed in: https://github.com/PranavM98/Facial-Detection-and-Emotion-Classifier/blob/main/10_Code/03_Flask_App/requirements.txt
+7. Navigate to "Facial-Detection-and-Emotion-Classifier/10_Code/03_Flask_App/" on your local, and run "python3 app.py" to run the Flask App.
