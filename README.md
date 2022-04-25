@@ -19,3 +19,6 @@ In this project, we explore various physical layer augmentation techniques such 
 
 ## Kaggle Link to Source Data
 1. https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset
+
+## BME Project Template Link
+https://github.com/PranavM98/Facial-Detection-and-Emotion-Classifier/blob/main/10_Code/03_Flask_App/templates/project_template.html
